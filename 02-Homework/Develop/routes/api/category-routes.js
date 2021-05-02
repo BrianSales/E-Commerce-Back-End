@@ -19,7 +19,9 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   // find one category by its `id` value
   const id = req.params.id 
-  Category.findByPk(id)
+  Category.findByPk(id,{
+    include: Product
+  })
 
   .then(category => {
     res.json(category)
